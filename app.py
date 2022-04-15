@@ -36,4 +36,4 @@ def main():
     return render_template("reqest.html",categories_length=zip(categories,list(range(0,length))),sub_categories=sub_categories,courses_detais=courses_detais )
 
 if __name__=="__main__":
-    app.run(port=8080,debug=True)
+    app.run(debug=True)
