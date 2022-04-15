@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+    <style>
+
+      .mb-0 > a {
+        display: block;
+        position: relative;
+      }
+      .mb-0 > a:after {
+        content: "\f078"; /* fa-chevron-down */
+        font-family: 'FontAwesome';
+        position: absolute;
+        right: 0;
+      }
+      .mb-0 > a[aria-expanded="true"]:after {
+        content: "\f077"; /* fa-chevron-up */
+      }
+    </style>
+    <title>Inueron Webscraping</title>
+  </head>
+  <body>
+    {% for i,j in categories_length %}
+    <div id="accordion">
+      
+      <div class="card">
+        <div class="card">
+        <div class="card-header" id="headingOne">
+          <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#{{i}}" aria-expanded="true" aria-controls="collapseOne">
+              {{i}}
+            </button>
+          </h5>
+        </div>
+        {% for k in sub_categories[j] %}
+        <div id="{{i}}" class="card">
+          <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+              <button class="btn btn-link" data-toggle="collapse" data-target="#{{k}}" aria-expanded="true" aria-controls="collapseOne">
+                       {{k}}
+              </button>
+            </h5>
+          </div>
+        
+        <div id="{{k}}" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+          <div class="card-body">
+
+            {% for r in courses_detais[j][0][k] %}
+             
+            
+             
+            <table class="table">
+              <thead>
+                <tr>
+                  
+                  <th scope="col">Name of course</th>
+                  <th scope="col">Details</th>
+                  <th scope="col">Trainer</th>
+                  <th scope="col">URL</th>
+                </tr>
+              </thead>
+					    
+              <tbody>
+                <tr>
+                  
+                  <td>{{r[0]}}</td>
+                  <td>{{r[1]}}</td>
+                  <td>{{r[2]}}</td>
+                  <td>{{r[3]}}</td>
+                  
+                </tr>
+                
+              
+              {% endfor %}
+              </tbody>
+            </table>
+
+
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+      
+    </div>
+    {% endfor %}
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
+
+
+
+
+    
